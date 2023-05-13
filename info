@@ -1,0 +1,46 @@
+#include <iostream>
+
+// Function to display the game board
+void displayBoard(int carPosition, int finishLine) {
+    for (int i = 0; i < finishLine; ++i) {
+        if (i == carPosition) {
+            std::cout << "C";
+        } else {
+            std::cout << "-";
+        }
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int finishLine = 20;  // Total length of the game board
+    int carPosition = 0;  // Initial position of the car
+
+    std::cout << "Welcome to the Car Game!" << std::endl;
+
+    while (carPosition < finishLine) {
+        displayBoard(carPosition, finishLine);
+
+        // Get the player's move
+        char move;
+        std::cout << "Enter your move (l for left, r for right): ";
+        std::cin >> move;
+
+        // Update the car's position based on the player's move
+        if (move == 'l') {
+            if (carPosition > 0) {
+                carPosition--;
+            }
+        } else if (move == 'r') {
+            if (carPosition < finishLine - 1) {
+                carPosition++;
+            }
+        }
+
+        std::cout << std::endl;
+    }
+
+    std::cout << "Congratulations! You reached the finish line." << std::endl;
+
+    return 0;
+}
